@@ -1,0 +1,82 @@
+Working with browser
+
+1.getTitle
+The title of the current page
+Example:
+String title=driver.getTitle();
+
+2.getCurrentURL
+Get the string the current URL that the browser is looking at
+
+Example
+String url=driver.getCurrentURL();
+
+3.getPageSource
+Get the source of the last loadedpage.
+Example:
+String src=driver.getPageSource();
+
+Verifications
+...............
+Element
+........
+1.getAttribute
+------------
+The attribute/property's current value or null if the value is not set.
+Example:
+WebElement where=driver.findElementByLink Text("lnk");
+String expectedUrl=where.getattribute("href");
+
+2.getCssValue
+---------------
+Get the value of a given CSS property.
+Color values should be returned as rgba strings
+
+css properties(e.g-background,font,border)
+getCssValue
+Example:
+WebElement where=driver.findElementByLinkText("lnk");
+string colour=where.getCssValue("color");
+
+use this url to validate your colour
+https://www.w3schools.com/colors/colors_converter.asp
+
+3.getText
+Get the visible inner Text of this element,including sub-elements,without any leading or trailing whitespace.
+getText:
+webElement ln=driver.findElement ByPartialLinkText("lnk");
+String text=ln.getText();
+4.Get Location
+This returns point,containing the locationof the top left-hand corner of the element
+Example:
+WebElement where=driver.findElementBylinkText("lnk");
+where.getlocation();
+5.GetSize
+This method will return the width and height of the rendered element as Dimension.
+Example:
+WebElement Where=driver.findElementByLinkText("lnk");
+where.getsize();
+Width and height
+6.Get Tagname:
+getthe tag name of this element. this method will returen"input" for the element
+<input name="username"/>
+Example:
+WebElement ln=driver.findElementByPartial linkText("lnk");
+String tag=l;.getTagName();
+
+7.isDisplayed
+Is this element displayed or not.if it is hidden then it will return false.if not in DOM and throw exception
+Example:
+WebElement where=driver.fingElementByLinkText("lnk");
+boolean is Visible=where.isDisplayedd();
+
+8.isEnable
+Is the element currently enabled or not,thiswill return true for everything but disabled input elements.
+Example
+WebElement username=driver.findEementById("id);
+boolean editable=username.isEnabled();
+9.is Selected
+Dtermine whether or not this element is selected or not.
+This option only apply to input elements such as checkboxes,options in a select and radio buttons.
+Example:WebElementagree=driver.findElementByid("chk");
+boolean checked=agree.is Selected();
