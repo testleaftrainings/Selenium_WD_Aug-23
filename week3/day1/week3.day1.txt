@@ -1,0 +1,148 @@
+Basic Xpath:
+  -Absolute Xpath
+     -It starts with "/"
+     -you should start traversing from the root node
+     -tagname is mandatory
+     -It's not preferred
+
+  Ex:  /html/body/div[2]/div[2]/div/form/p/input 
+    
+Relative xpath:
+   -It starts with "//"
+   -tagname is mandatory
+
+Note:
+To open the filter box in the Dom-press ctrl+f
+
+xpath(5):
+ 1.Attribute based xpath
+  Syntax: //tagName[@attributeName='attributeValue']
+  Ex    :  //input[@value='Login']
+  
+  2.Partial Attribute based xPath:
+   Syntax:  //tagName[contains(@attributeName,'partialAttributeValue')]   
+   Ex:    //input[contains(@name,'suggestions')] 
+
+ 3.Text Based xpath:
+   Syntax: //tagName[text()='textValue']
+   Ex    : //a[text()='Leads']
+
+
+ 4.Partial text based xPath:
+   Syntax:  //tagName[contains(text(),'textValue')]  
+   Ex:     //section[contains(text(),'Valasaivettikad')]     
+
+ 5.Index Based xPath:
+ (any xpath)[index] start from 1 xpath --->1
+   Syntax:  (//tagName[@attributeName='attributeValue'])[index]
+   
+   Ex:     (//input[@class='inputLogin'])[1]
+   (//option[@class='ui-selectonemenu-label'])[4]
+
+   
+
+Find the xpath 
+---------------
+https://www.nykaa.com/  ---->Search box  using (name) attribute
+//input[@name='search-suggestions-nykaa']
+https://www.irctc.co.in/nget/train-search---> from station ->Partial attribute based xpath
+//input[contains(@class,'ng-tns')]
+index based:
+(//input[contains(@class,'ng-tns')])[1]
+https://www.amazon.in/  --->Best Sellers Deals using Text based
+//a[text()='Best Sellers']
+https://www.zoomcar.com/in/chennai --->GET CAR using partial Text based 
+//section[contains(text(),'GET CAR')]   
+https://buythevalue.in/ --->URBAN FIT X SMART WATCH using partial Text based
+
+
+Classroom:
+  http://leaftaps.com/opentaps/control/main
+  1)Write xpath for the following fields:
+    username
+    Password
+    crm/sfa link
+     
+
+
+
+Axes xpath:
+Advanced xPath(8):
+
+1)Parent to Child:
+  Syntax: BasicXpathforParent/childtagName
+  Ex:  //form[@id='login']/p
+(//form[@id='login']/p)[3] ---->index 
+
+2)Child to parent:
+  Syntax:  BasicXpathforChild/parent::parenttagName 
+  Ex:    //p[@class='top']/parent::form 
+
+3)GrandParent to GrandChild:
+  Syntax:  BasicXpathforGrandParent//grandChildtagName  
+  Ex://form[@id='login']//input
+
+4)GrandChild to GrandParent:
+  Syntax:  BasicXpathforGrandChild/ancestor::grandParenttagName      
+  Ex:      //input[@id='username']/ancestor::form
+
+5)ElderCousin to YoungerCousin:
+  Syntax: Xpath_ElderCousin/following::youngerCousinTagName    
+  Ex:  //label[text()='Username']/following::label   
+
+6)YoungerCousin to ElderCousin:
+  Syntax:  youngercousinXpath/preceding::elderCousinTagName
+  Ex:     //input[@name='PASSWORD']/preceding::label
+
+7)ElderSibling to YoungerSibling:
+   Syntax:  ElderSiblingXpath/following-sibling::youngerSiblingTagName
+   Ex:     //label[text()='Username']/following-sibling::input
+
+8)YoungerSibling to ElderSibling:
+   Syntax:  youngerSiblingXpath/preceding-sibling::elderSiblingTagName
+   Ex:     //input[@name='PASSWORD']/preceding-sibling::label
+      
+https://pizzaonline.dominos.co.in/menu
+
+WebDriver Method:
+-----------------
+Browser verification method:
+-----------------------------
+getTitle-current open page title
+String title = driver.getTitle();
+System.out.println(title);
+
+getCurrentUrl-String of current URL that the browser is
+String url = driver.getCurrentUrl();
+System.out.println(url);
+
+getPageSource-Get the dom page content
+
+String pageSource = driver.getPageSource();
+System.out.println(pageSource);
+
+getAttribute--Get the value of the given attribute of the element.
+Will return the current value, even if this has been modified after the page has been loaded. 
+This method will return the value of the property with the given name,if it exists.
+If it does not, then the value of the attribute with the given name is returned. Ifneither exists, null is returned.
+Code
+-----
+String value = driver.findElement(By.id("j_idt88:j_idt97")).getAttribute("value");
+System.out.println(value);
+
+getCssValue
+Get the value of a given CSS property. 
+Color values could be returned as rgba or rgb strings.
+This depends on whether the browser omits the implicit opacity value or not. 
+
+For example: if the "background-color" property is set as "green" in the HTML source, 
+thereturned value could be "rgba(0, 255, 0, 1)" if implicit opacity value is preserved or "rgb(0,255, 0)" if it is omitted. 
+
+String cssValue =driver.findElement(By.xpath("//section[contains(text(),'GET CAR')]")).getCssValue("background-color");
+System.out.println(cssValue);
+
+getText-Get the visible (i.e. not hidden by CSS) text of this element, including sub-elements. 
+
+String text = driver.findElement(By.id("viewLead_companyName_sp")).getText();
+		
+System.out.println(text);
