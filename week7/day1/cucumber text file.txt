@@ -1,0 +1,141 @@
+Today's Agenda
+--------------
+Cucumber Intorduction
+============================
+Cucumber is a popular open-source testing framework used for behavior-driven development (BDD) 
+and acceptance test-driven development (ATDD) in software development. 
+It allows teams to define, document, and automate the testing of software in a more human-readable format, 
+making it easier for non-technical stakeholders to understand and participate in the testing process.
+
+Here's an introduction to Cucumber and its key components:
+
+1. Behavior-Driven Development (BDD): Cucumber is built on the principles of BDD, which emphasizes collaboration between developers, testers, and non-technical stakeholders such as product owners and business analysts. BDD encourages defining and testing software behaviors based on real-world scenarios and user stories.
+
+2. Gherkin Language: Cucumber uses the Gherkin language to write test scenarios in a structured and human-readable format. Gherkin scenarios are written in plain text and follow a specific syntax that includes keywords like "Given," "When," and "Then" to describe the steps of a test scenario. This syntax makes it easy to create and understand test cases even for those who are not familiar with coding.
+
+3. Feature Files: Test scenarios are organized into feature files, which typically have a .feature extension. Each feature file contains one or more scenarios and serves as documentation for the tested feature or functionality.
+
+4. Step Definitions: Cucumber allows you to map Gherkin steps to actual code implementations. These code implementations are referred to as step definitions. Step definitions are written in programming languages such as Java, Ruby, Python, or JavaScript and define the actions that should be taken for each step in the scenario.
+
+5. Test Automation: Cucumber enables the automation of test scenarios by linking Gherkin steps to corresponding step definitions. When you run a Cucumber test suite, the framework executes the steps in the scenarios by invoking the associated step definitions, allowing you to test the application's behavior automatically.
+
+6. Reporting and Integration: Cucumber provides reporting features to generate detailed test reports, including information about test pass/fail status and any issues encountered during testing. It can also be integrated with various testing tools and continuous integration (CI) pipelines to streamline the testing process.
+
+7. Cross-Functionality: Cucumber can be used for testing various types of applications, including web, mobile, and APIs. It is not limited to a specific technology stack and can be integrated with different testing tools and frameworks.
+
+In summary, Cucumber is a BDD framework that promotes collaboration, documentation, and automation in software testing. It uses the Gherkin language to write human-readable test scenarios, which are linked to step definitions that perform the actual testing. This approach helps teams ensure that software behaves as expected and can be easily understood by both technical and non-technical team members.
+
+TDD - Test Driven Development
+-----------------------------
+- Write the test cases first based on the requirement
+- Test cases should be apporved by the project team
+- Development will be based on the test cases
+
+
+ATDD - Aceptance Test Driven Development:
+-----------------------------------------
+- Write the acceptance test cases first based on the requirement
+- Test cases should be apporved by the project team
+- Development will be based on the test cases 
+
+Con: Communication gap between the Technical (Dev & Testers)
+     team and Non Technical team (Client /product owner)
+
+BDD - Behaviour Driven Development:
+-----------------------------------
+To address the communication gap between tech and non tech team
+- Write the test scenarios using Gherkin (common) language
+  first
+- Approve the test scenarios
+- BDD test scenarios will drive the development
+
+
+Gherkin Keywords:
+------------------
+Feature  - Used to describe the functionality
+Scenario - Used to describe the test case
+Given - Used to represent pre-requisite for a scenario
+When - Used to represent test step / test condition
+Then - Used to represent the expected result for positive scenario
+But - Used to represent the expected result for negative scenario
+
+
+Test steps:
+Open the chrome browser
+Load the application url
+Enter the username as demosalesmanager
+Enter the password as crmsfa
+click Login button
+
+Homepage should be displayed
+
+
+Start with uppercasse
+End with : space
+
+
+
+ClassRoom:
+1.Create 3 packages under src/test/java
+
+    -features
+	-steps
+	-runner
+2. Create Login.feature under features package
+
+3.Write the scenario to test login functionality with positive data	
+	
+-------------------------------------------------------------------------
+How to parameterize the data from feature file
+===============================================
+1. Enclose the data with '' in the feature file
+2. Replace the data in the cucucmber annotation text with {string}
+3. Create argument for the method to get input
+4. Replace the hardcoded value with the argument variable
+
+Cucumber Exceptions:
+---------------------
+UnDefinedStepException - When a step doesn't have implementation
+DuplicateStepDefinitionException - When a step having more than 1 implementation
+
+How to pass multiple data to a scenario:
+-----------------------------------------
+Use Gherkin keyword Scenario Outline
+1. Scenario Outline keyword should be used
+2. Examples should follow Scenario Outline
+3. Define the column names inside || after Examples (first row for column names)
+4. Second row onward give the data inside ||
+
+
+Background: Used to have common precondition for all the scenarios in a feature file
+            
+
+Limitations:
+------------
+1. Background is not applicable for all the scenarios across multiple feature files
+2. There is no keyword to execute common post condition
+
+
+Hooks implementation:
+
+precondition for all  feature file--@Before
+
+Also postcondition for all feature file---@After
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
