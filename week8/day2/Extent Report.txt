@@ -1,0 +1,121 @@
+ExtentReport:
+-------------
+To generate HTML-based reports that include detailed information
+about test results, including logs, screenshots, and performance metrics.
+
+It provides a wide range of features, including:
+--->Good Looking graphical representation of execution
+--->Test categorization and Author based report
+--->Detailed test result reporting with screenshots and logs
+--->Real-time dashboard reporting
+--->Integration with popular test automation frameworks
+--->Support for parallel test execution
+--->Historical reporting and trend analysis
+
+aventstack---3.1.5--->open source
+
+<dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>3.1.5</version>
+        </dependency>
+
+ Classes used in ExtentReport:
+
+1.ExtentHtmlReporter
+Creating object for ExtentHtmlReporter to create a physical html file
+
+If you want to maintain the history of the execution
+
+2.ExtentReporters
+Creating an object for ExtentReporters class to create a new report
+ To capture the automation data and attach  to the physical file
+
+3.ExtentTest
+Creating a new Test inside the report for each test case and capture the status
+
+4.MediaEntityBuilder
+To attach the screenshot to the report
+
+
+Steps to integrate ExtentReport with POM:
+-----------------------------------------
+1. Create startReport() method in BaseClass with @BeforeSuite annotation
+	- Add step1 to step3 ExtentReport code
+	- Declare ExtentReports as global variable with static access modifier
+	
+2. Create testDetails() in BaseClass with @BeforeClass as annotation
+	- Add testcase details code into the method
+	- Declare the ExtentTest as global variable with static access modifier
+	
+3. Declare global variables testName, testDescription, testCategory, testAuthor and replace the hardcoded value with these variables	
+
+4. Create stopReport() in ProjectSpecificMethods with @AfterSuite
+	- add extent.flush()
+	
+5. Create reportStep() in ProjectSpecificMethods with 2 arguments (stepInfo, status)	
+	- Conditional statement to call appropriate method for pass and fail status
+	
+6. Call reportStep() from page methods
+		- from try block, call with pass status
+		- from catch block call with fail status
+		
+7. Create takeSnap() in ProjectSpecificMethods with necessary code to take snapshot with filename appending with Random number
+		- add return statement to give random number as output 
+		
+8. Call takeSnap() from reportStep() to attach the image to the steps
+
+9. Inside setup step in @Before Test add testName, testDescription, testCategory, testAuthor and pass the input
+
+9. @DataProvider----fetchData
+      @BeforeMethod
+        add node
+node-->subset
+test data
+test1 node 1
+
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+step1:setup the report file to capture the status
+step2:setup thedetails foe a single testcase
+     testcase name
+     testcase description
+     testcase category
+     testcase author
+step3:Capture the status for each step
+
+
+Integrate extent Report 
+-------------------------
+steps:
+1.Create startReport()with @BeforeSuite in ProjecctSpecificMethod and Keep all the common code
+2.Make ExtentReport as Global variable
+3.create stopReport() @AfterSuite to have extent.flush().
+4.Create testdetail()with @beforeClass for test case detail code
+5.Declare ExtentTest Globally.
+6.Create Global variable testname,testDescription,test author,and test category
+7.Replace the hard code values with respective variable name
+8.Assign the value for the variable in the setup() in the testcase
+
+@BeforeSuite-----to start the report
+  @BeforeTest----setting up the values for testcase name,des,aut,category
+    @Beforeclass---set up the values in the report
+      @DataProvider(2 set )
+       @beforeMethod
+                @Test
+
+
+1.Create reportStep() with 2 args(stepDesc,status)
+2.Add conditional statement to call pass()/fail() based on the status
+3.In the step level method ,surround the selenium code with trycatch block
+4.call reportStep() from try and catch blolck with pass and fail status
+
+Steps to attach Screenshot:
+------------------------------
+1.Create takeSnap()with selenium code to take the screen shot
+
+2.Generating the random number and append the file name with random number
+3.Have to return with random number
+4.call the takesnap() from snapshot and get a random number to append with filename
+
+
